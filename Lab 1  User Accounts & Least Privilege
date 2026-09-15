@@ -1,0 +1,8 @@
+Created Employee01 as a standard Windows user.
+Verified its membership in the Users group.
+Tested UAC and confirmed administrator credentials were required for elevation.
+Created a simulated confidential company folder.
+Examined its Access Control List (ACL).
+Disabled inherited permissions.
+Removed broad Users and Authenticated Users access.
+Verified Employee01 was denied access to the confidential folder.
