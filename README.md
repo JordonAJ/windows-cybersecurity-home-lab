@@ -121,9 +121,9 @@ I created a custom Event Viewer view called **Failed Login Attempts** that displ
 
 ## Findings
 
-The investigation identified three failed interactive authentication attempts against Employee01 followed by a successful authentication. Because these events were intentionally generated as part of the lab, they represented a controlled simulation rather than an actual security incident.
+The investigation identified three failed interactive authentication attempts against Employee01 followed by a successful authentication. Because these events were intentionally generated as part of the lab, they represented a controlled situation rather than an actual security incident.
 
-This exercise demonstrated how Windows Security logs can be used to identify authentication failures, correlate related events, and construct a basic incident timeline.
+This exercise showed how Windows Security logs can be used to identify authentication failures, correlate related events, and construct a basic incident timeline.
 
 ## Skills Practiced
 
