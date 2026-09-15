@@ -52,3 +52,88 @@ After changing the NTFS permissions, I logged into Employee01 and attempted to a
 - Access Control Lists (ACLs)
 - Authentication and authorization
 - Security control testing and verification
+
+
+## Lab 2: Windows Event Viewer & Security Log Analysis
+
+## Objective
+
+The objective of this lab was to learn how to use Windows Event Viewer to identify, investigate, and document authentication activity. I simulated multiple failed login attempts and analyzed the resulting Windows Security events.
+
+## Tasks Completed
+
+- Navigated Windows Security logs using Event Viewer.
+- Filtered security logs using Windows Event IDs.
+- Identified Event ID 4624 for successful logons.
+- Identified Event ID 4625 for failed logon attempts.
+- Generated three controlled failed login attempts against Employee01.
+- Investigated the account associated with the failed authentication attempts.
+- Examined the failure reason and source information.
+- Correlated multiple failed attempts with a subsequent successful login.
+- Created a custom Event Viewer view for monitoring failed login attempts.
+
+## Failed Login Investigation
+
+Three incorrect passwords were intentionally entered for the Employee01 account to simulate repeated failed authentication attempts.
+
+Event Viewer recorded these attempts as Event ID 4625.
+
+### Account and Failure Information
+
+The event identified Employee01 as the account associated with the failed logon attempt. The failure reason reported an unknown user name or bad password.
+
+![Failed logon account and reason](lab2-01-failed-logon-account-and-reason.png)
+
+### Source Information
+
+The failed logon event showed the workstation as CYBER-LAB-01 and the source network address as 127.0.0.1, indicating that the recorded source was the local system.
+
+![Failed logon source information](lab2-02-failed-logon-source-information.png)
+
+## Multiple Failed Login Attempts
+
+Filtering the Security log for Event ID 4625 revealed three failed login attempts within several seconds.
+
+![Multiple failed logon attempts](lab2-03-multiple-failed-logon-attempts.png)
+
+## Incident Timeline
+
+| Time | Event ID | Result |
+|------|----------|--------|
+| 3:04:40 PM | 4625 | Failed logon |
+| 3:04:42 PM | 4625 | Failed logon |
+| 3:04:45 PM | 4625 | Failed logon |
+| 3:04:50 PM | 4624 | Successful logon |
+
+After three failed authentication attempts, Employee01 successfully logged into the system.
+
+## Successful Logon Verification
+
+Event ID 4624 confirmed that Employee01 successfully authenticated at 3:04:50 PM.
+
+![Successful logon](lab2-04-successful-logon-after-failures.png)
+
+## Failed Login Monitoring
+
+I created a custom Event Viewer view called **Failed Login Attempts** that displays Event ID 4625 from the Windows Security log. This provides a reusable method for reviewing failed authentication attempts without manually filtering the Security log each time.
+
+![Failed login custom view](lab2-05-failed-login-custom-view.png)
+
+## Findings
+
+The investigation identified three failed interactive authentication attempts against Employee01 followed by a successful authentication. Because these events were intentionally generated as part of the lab, they represented a controlled simulation rather than an actual security incident.
+
+This exercise demonstrated how Windows Security logs can be used to identify authentication failures, correlate related events, and construct a basic incident timeline.
+
+## Skills Practiced
+
+- Windows Event Viewer
+- Windows Security logs
+- Security event filtering
+- Event ID 4624 analysis
+- Event ID 4625 analysis
+- Failed login investigation
+- Log correlation
+- Incident timeline creation
+- Basic security monitoring
+- Authentication log analysis
