@@ -144,24 +144,11 @@ This exercise showed how Windows Security logs can be used to identify authentic
 
 The objective of this lab was to explore Microsoft Defender, configure Windows endpoint security features, safely simulate a malware detection, investigate the alert, remediate the detected threat, and verify that the system was clean.
 
-## Defender Security Configuration
-
-I reviewed Microsoft Defender Antivirus settings and verified that important security features were enabled, including:
-
-- Real-time protection
-- Cloud-delivered protection
-- Automatic sample submission
-- Tamper Protection
-
 ## Safe Malware Detection Test
 
 I used the EICAR antivirus test file to safely test Microsoft Defender's detection capabilities. EICAR is a harmless test file designed to trigger antivirus software without using real malware.
 
-Microsoft Defender successfully identified the file as:
-
-**Virus:DOS/EICAR_Test_File**
-
-The detection was classified as Severe.
+Microsoft Defender successfully identified the file as **Virus:DOS/EICAR_Test_File** and classified the detection as Severe.
 
 ![EICAR threat detected](screenshots/lab3/lab3-01-eicar-threat-detected.png)
 
@@ -180,13 +167,15 @@ The investigation identified:
 
 ## Threat Remediation
 
-I quarantined the detected test file using Microsoft Defender. Protection History confirmed that the threat status changed to Quarantined and the file was no longer available from its original location.
+I quarantined the detected EICAR test file using Microsoft Defender. Protection History confirmed that the threat status changed from Active to Quarantined.
 
 ![EICAR threat quarantined](screenshots/lab3/lab3-03-eicar-threat-quarantined.png)
 
+After quarantine, I verified that the EICAR test file was no longer available from its original location.
+
 ## Potentially Unwanted Application Protection
 
-I reviewed reputation-based protection settings and found that Potentially Unwanted Application (PUA) blocking was disabled.
+I reviewed Windows reputation-based protection settings and found that Potentially Unwanted Application (PUA) blocking was disabled.
 
 I enabled:
 
@@ -202,17 +191,18 @@ This provides additional protection against low-reputation or unwanted software 
 
 I attempted to enable Windows Memory Integrity as an additional system security control. Windows reported that an incompatible driver prevented the feature from being enabled.
 
-I investigated the issue and identified:
-
-- **Driver:** E1G6032E.sys
-- **Device:** Intel(R) PRO/1000 MT Desktop Adapter
-- **Driver Provider:** Microsoft
-- **Driver Version:** 8.4.13.0
-- **Driver Date:** 3/23/2010
-
-Because the network adapter provides network connectivity to the virtual machine, I did not remove the driver simply to enable Memory Integrity.
+I investigated the incompatible drivers and identified **E1G6032E.sys**, associated with the Intel(R) PRO/1000 MT Desktop Adapter used by the virtual machine.
 
 ![Memory Integrity incompatible driver](screenshots/lab3/lab3-05-memory-integrity-incompatible-driver.png)
+
+Further investigation in Device Manager showed:
+
+- Device: Intel(R) PRO/1000 MT Desktop Adapter
+- Driver Provider: Microsoft
+- Driver Version: 8.4.13.0
+- Driver Date: 3/23/2010
+
+Because this network adapter provides network connectivity to the virtual machine, I did not remove the driver simply to enable Memory Integrity.
 
 ## Driver Update Investigation
 
@@ -224,14 +214,14 @@ Windows reported that the best available driver was already installed. I documen
 
 ## Final Security Scan
 
-After completing the security configuration, EICAR detection test, remediation, and troubleshooting, I performed a Microsoft Defender Full Scan.
+After completing the EICAR test, threat remediation, security configuration, and driver investigation, I performed a Microsoft Defender Full Scan.
 
 Results:
 
-- **228,299 files scanned**
-- **0 threats found**
-- **No current threats**
-- **Scan time: 15 minutes 53 seconds**
+- 228,299 files scanned
+- 0 threats found
+- No current threats
+- Scan time: 15 minutes 53 seconds
 
 ![Final Defender full scan](screenshots/lab3/lab3-07-full-scan-clean.png)
 
