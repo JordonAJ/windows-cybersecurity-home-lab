@@ -137,3 +137,107 @@ This exercise showed how Windows Security logs can be used to identify authentic
 - Incident timeline creation
 - Basic security monitoring
 - Authentication log analysis
+
+# Lab 3: Microsoft Defender & Endpoint Security
+
+## Objective
+
+The objective of this lab was to explore Microsoft Defender, configure Windows endpoint security features, safely simulate a malware detection, investigate the alert, remediate the detected threat, and verify that the system was clean.
+
+## Defender Security Configuration
+
+I reviewed Microsoft Defender Antivirus settings and verified that important security features were enabled, including:
+
+- Real-time protection
+- Cloud-delivered protection
+- Automatic sample submission
+- Tamper Protection
+
+![Microsoft Defender settings](lab3-01-defender-settings.png)
+
+## Safe Malware Detection Test
+
+I used the EICAR antivirus test file to safely test Microsoft Defender's detection capabilities. EICAR is a harmless test file designed to trigger antivirus software without using real malware.
+
+Microsoft Defender successfully identified the file as:
+
+**Virus:DOS/EICAR_Test_File**
+
+The detection was classified as Severe.
+
+![EICAR threat detected](lab3-02-eicar-threat-detected.png)
+
+## Threat Investigation
+
+I investigated the detection using Windows Security Protection History.
+
+The investigation identified:
+
+- Threat: Virus:DOS/EICAR_Test_File
+- Severity: Severe
+- Initial status: Active
+- Affected file: C:\Users\Labadmin\Documents\eicar.com
+
+![EICAR Protection History](lab3-03-eicar-protection-history.png)
+
+## Threat Remediation
+
+I quarantined the detected test file using Microsoft Defender. Protection History confirmed that the threat status changed to Quarantined and the file was no longer available from its original location.
+
+![EICAR threat quarantined](lab3-04-eicar-quarantined.png)
+
+## Potentially Unwanted Application Protection
+
+I reviewed reputation-based protection settings and found that Potentially Unwanted Application (PUA) blocking was disabled.
+
+I enabled:
+
+- Potentially unwanted app blocking
+- Block apps
+- Block downloads
+
+This provides additional protection against low-reputation or unwanted software that may not necessarily be classified as traditional malware.
+
+![PUA protection enabled](lab3-05-pua-protection-enabled.png)
+
+## Memory Integrity Troubleshooting
+
+I attempted to enable Windows Memory Integrity as an additional system security control. Windows reported that an incompatible driver prevented the feature from being enabled.
+
+I investigated the issue and identified:
+
+**Driver:** E1G6032E.sys  
+**Device:** Intel(R) PRO/1000 MT Desktop Adapter
+
+I verified that the adapter was using a Microsoft-provided driver and checked for an updated driver. Windows reported that the best available driver was already installed.
+
+Because the adapter provides network connectivity to the virtual machine, I did not remove the driver simply to enable Memory Integrity. The compatibility issue was documented for further investigation.
+
+![Memory Integrity incompatible driver](lab3-06-memory-integrity-driver.png)
+
+## Final Security Scan
+
+After completing the security configuration and EICAR detection test, I performed a Microsoft Defender Full Scan.
+
+Results:
+
+- 228,299 files scanned
+- 0 threats found
+- No current threats
+
+![Final Defender full scan](lab3-07-full-scan-clean.png)
+
+## Skills Practiced
+
+- Microsoft Defender Antivirus
+- Endpoint security
+- Real-time malware protection
+- Antivirus scanning
+- Threat detection and investigation
+- Protection History analysis
+- Threat quarantine and remediation
+- Potentially Unwanted Application (PUA) protection
+- Windows reputation-based protection
+- Core isolation and Memory Integrity
+- Driver compatibility troubleshooting
+- Security verification
