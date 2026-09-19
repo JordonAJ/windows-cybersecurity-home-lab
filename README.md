@@ -153,8 +153,6 @@ I reviewed Microsoft Defender Antivirus settings and verified that important sec
 - Automatic sample submission
 - Tamper Protection
 
-![Microsoft Defender settings](lab3-01-defender-settings.png)
-
 ## Safe Malware Detection Test
 
 I used the EICAR antivirus test file to safely test Microsoft Defender's detection capabilities. EICAR is a harmless test file designed to trigger antivirus software without using real malware.
@@ -165,7 +163,7 @@ Microsoft Defender successfully identified the file as:
 
 The detection was classified as Severe.
 
-![EICAR threat detected](lab3-02-eicar-threat-detected.png)
+![EICAR threat detected](screenshots/lab3/lab3-01-eicar-threat-detected.png)
 
 ## Threat Investigation
 
@@ -178,13 +176,13 @@ The investigation identified:
 - Initial status: Active
 - Affected file: C:\Users\Labadmin\Documents\eicar.com
 
-![EICAR Protection History](lab3-03-eicar-protection-history.png)
+![EICAR Protection History](screenshots/lab3/lab3-02-eicar-protection-history.png)
 
 ## Threat Remediation
 
 I quarantined the detected test file using Microsoft Defender. Protection History confirmed that the threat status changed to Quarantined and the file was no longer available from its original location.
 
-![EICAR threat quarantined](lab3-04-eicar-quarantined.png)
+![EICAR threat quarantined](screenshots/lab3/lab3-03-eicar-threat-quarantined.png)
 
 ## Potentially Unwanted Application Protection
 
@@ -198,7 +196,7 @@ I enabled:
 
 This provides additional protection against low-reputation or unwanted software that may not necessarily be classified as traditional malware.
 
-![PUA protection enabled](lab3-05-pua-protection-enabled.png)
+![PUA protection enabled](screenshots/lab3/lab3-04-pua-protection-enabled.png)
 
 ## Memory Integrity Troubleshooting
 
@@ -206,26 +204,36 @@ I attempted to enable Windows Memory Integrity as an additional system security 
 
 I investigated the issue and identified:
 
-**Driver:** E1G6032E.sys  
-**Device:** Intel(R) PRO/1000 MT Desktop Adapter
+- **Driver:** E1G6032E.sys
+- **Device:** Intel(R) PRO/1000 MT Desktop Adapter
+- **Driver Provider:** Microsoft
+- **Driver Version:** 8.4.13.0
+- **Driver Date:** 3/23/2010
 
-I verified that the adapter was using a Microsoft-provided driver and checked for an updated driver. Windows reported that the best available driver was already installed.
+Because the network adapter provides network connectivity to the virtual machine, I did not remove the driver simply to enable Memory Integrity.
 
-Because the adapter provides network connectivity to the virtual machine, I did not remove the driver simply to enable Memory Integrity. The compatibility issue was documented for further investigation.
+![Memory Integrity incompatible driver](screenshots/lab3/lab3-05-memory-integrity-incompatible-driver.png)
 
-![Memory Integrity incompatible driver](lab3-06-memory-integrity-driver.png)
+## Driver Update Investigation
+
+I checked Windows for an updated driver for the Intel(R) PRO/1000 MT Desktop Adapter.
+
+Windows reported that the best available driver was already installed. I documented the compatibility issue rather than removing a required network driver and potentially disrupting the VM's network connectivity.
+
+![Driver update check](screenshots/lab3/lab3-06-driver-update-check.png)
 
 ## Final Security Scan
 
-After completing the security configuration and EICAR detection test, I performed a Microsoft Defender Full Scan.
+After completing the security configuration, EICAR detection test, remediation, and troubleshooting, I performed a Microsoft Defender Full Scan.
 
 Results:
 
-- 228,299 files scanned
-- 0 threats found
-- No current threats
+- **228,299 files scanned**
+- **0 threats found**
+- **No current threats**
+- **Scan time: 15 minutes 53 seconds**
 
-![Final Defender full scan](lab3-07-full-scan-clean.png)
+![Final Defender full scan](screenshots/lab3/lab3-07-full-scan-clean.png)
 
 ## Skills Practiced
 
@@ -240,4 +248,6 @@ Results:
 - Windows reputation-based protection
 - Core isolation and Memory Integrity
 - Driver compatibility troubleshooting
+- Windows Device Manager
+- Endpoint security configuration
 - Security verification
