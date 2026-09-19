@@ -140,11 +140,11 @@ This exercise showed how Windows Security logs can be used to identify authentic
 
 ## Lab 3: Microsoft Defender & Endpoint Security
 
-## Objective
+### Objective
 
 The objective of this lab was to explore Microsoft Defender, configure Windows endpoint security features, safely simulate a malware detection, investigate the alert, remediate the detected threat, and verify that the system was clean.
 
-## Safe Malware Detection Test
+### Safe Malware Detection Test
 
 I used the EICAR antivirus test file to safely test Microsoft Defender's detection capabilities. EICAR is a harmless test file designed to trigger antivirus software without using real malware.
 
@@ -152,7 +152,7 @@ Microsoft Defender successfully identified the file as **Virus:DOS/EICAR_Test_Fi
 
 ![EICAR threat detected](screenshots/lab3/lab3-01-eicar-threat-detected.png)
 
-## Threat Investigation
+### Threat Investigation
 
 I investigated the detection using Windows Security Protection History.
 
@@ -161,11 +161,11 @@ The investigation identified:
 - Threat: Virus:DOS/EICAR_Test_File
 - Severity: Severe
 - Initial status: Active
-- Affected file: C:\Users\Labadmin\Documents\eicar.com
+- Affected file: `C:\Users\Labadmin\Documents\eicar.com`
 
 ![EICAR Protection History](screenshots/lab3/lab3-02-eicar-protection-history.png)
 
-## Threat Remediation
+### Threat Remediation
 
 I quarantined the detected EICAR test file using Microsoft Defender. Protection History confirmed that the threat status changed from Active to Quarantined.
 
@@ -173,7 +173,7 @@ I quarantined the detected EICAR test file using Microsoft Defender. Protection 
 
 After quarantine, I verified that the EICAR test file was no longer available from its original location.
 
-## Potentially Unwanted Application Protection
+### Potentially Unwanted Application Protection
 
 I reviewed Windows reputation-based protection settings and found that Potentially Unwanted Application (PUA) blocking was disabled.
 
@@ -187,7 +187,7 @@ This provides additional protection against low-reputation or unwanted software 
 
 ![PUA protection enabled](screenshots/lab3/lab3-04-pua-protection-enabled.png)
 
-## Memory Integrity Troubleshooting
+### Memory Integrity Troubleshooting
 
 I attempted to enable Windows Memory Integrity as an additional system security control. Windows reported that an incompatible driver prevented the feature from being enabled.
 
@@ -197,14 +197,14 @@ I investigated the incompatible drivers and identified **E1G6032E.sys**, associa
 
 Further investigation in Device Manager showed:
 
-- Device: Intel(R) PRO/1000 MT Desktop Adapter
-- Driver Provider: Microsoft
-- Driver Version: 8.4.13.0
-- Driver Date: 3/23/2010
+- **Device:** Intel(R) PRO/1000 MT Desktop Adapter
+- **Driver Provider:** Microsoft
+- **Driver Version:** 8.4.13.0
+- **Driver Date:** 3/23/2010
 
 Because this network adapter provides network connectivity to the virtual machine, I did not remove the driver simply to enable Memory Integrity.
 
-## Driver Update Investigation
+### Driver Update Investigation
 
 I checked Windows for an updated driver for the Intel(R) PRO/1000 MT Desktop Adapter.
 
@@ -212,20 +212,20 @@ Windows reported that the best available driver was already installed. I documen
 
 ![Driver update check](screenshots/lab3/lab3-06-driver-update-check.png)
 
-## Final Security Scan
+### Final Security Scan
 
 After completing the EICAR test, threat remediation, security configuration, and driver investigation, I performed a Microsoft Defender Full Scan.
 
 Results:
 
-- 228,299 files scanned
-- 0 threats found
-- No current threats
-- Scan time: 15 minutes 53 seconds
+- **228,299 files scanned**
+- **0 threats found**
+- **No current threats**
+- **Scan time:** 15 minutes 53 seconds
 
 ![Final Defender full scan](screenshots/lab3/lab3-07-full-scan-clean.png)
 
-## Skills Practiced
+### Skills Practiced
 
 - Microsoft Defender Antivirus
 - Endpoint security
@@ -239,5 +239,7 @@ Results:
 - Core isolation and Memory Integrity
 - Driver compatibility troubleshooting
 - Windows Device Manager
+- Endpoint security configuration
+- Security verification
 - Endpoint security configuration
 - Security verification
