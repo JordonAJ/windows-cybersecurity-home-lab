@@ -29,19 +29,19 @@ The objective of this lab was to practice Windows user account management, privi
 
 Employee01 was unable to perform an administrative operation without providing administrator credentials.
 
-![UAC requiring administrator credentials](01-uac-admin-credentials-required.png)
+![UAC requiring administrator credentials](screenshots/lab1/01-uac-admin-credentials-required.png)
 
 ### NTFS Permission Hardening
 
 Permissions on the confidential folder were restricted to Administrators and SYSTEM.
 
-![Hardened NTFS permissions](02-ntfs-permissions-hardened.png)
+![Hardened NTFS permissions](screenshots/lab1/02-ntfs-permissions-hardened.png)
 
 ### Access Control Verification
 
 After changing the NTFS permissions, I logged into Employee01 and attempted to access the confidential folder. Windows denied access, confirming that the permissions were working as intended.
 
-![Employee01 access denied](03-confidential-folder-access-denied.png)
+![Employee01 access denied](screenshots/lab1/03-confidential-folder-access-denied.png)
 
 ## Skills Practiced
 
