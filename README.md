@@ -138,7 +138,7 @@ This exercise showed how Windows Security logs can be used to identify authentic
 - Basic security monitoring
 - Authentication log analysis
 
-# Lab 3: Microsoft Defender & Endpoint Security
+## Lab 3: Microsoft Defender & Endpoint Security
 
 ## Objective
 
