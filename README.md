@@ -82,19 +82,19 @@ Event Viewer recorded these attempts as Event ID 4625.
 
 The event identified Employee01 as the account associated with the failed logon attempt. The failure reason reported an unknown user name or bad password.
 
-![Failed logon account and reason](01-failed-logon-account-and-reason.png)
+![Failed logon account and reason](screenshots/lab2/01-failed-logon-account-and-reason.png)
 
 ### Source Information
 
 The failed logon event showed the workstation as CYBER-LAB-01 and the source network address as 127.0.0.1, indicating that the recorded source was the local system.
 
-![Failed logon source information](02-failed-logon-source-information.png)
+![Failed logon source information](screenshots/lab2/02-failed-logon-source-information.png)
 
 ## Multiple Failed Login Attempts
 
 Filtering the Security log for Event ID 4625 revealed three failed login attempts within several seconds.
 
-![Multiple failed logon attempts](03-multiple-failed-logon-attempts.png)
+![Multiple failed logon attempts](screenshots/lab2/03-multiple-failed-logon-attempts.png)
 
 ## Incident Timeline
 
@@ -111,13 +111,13 @@ After three failed authentication attempts, Employee01 successfully logged into 
 
 Event ID 4624 confirmed that Employee01 successfully authenticated at 3:04:50 PM.
 
-![Successful logon](04-successful-logon-after-failures.png)
+![Successful logon](screenshots/lab2/04-successful-logon-after-failures.png)
 
 ## Failed Login Monitoring
 
 I created a custom Event Viewer view called **Failed Login Attempts** that displays Event ID 4625 from the Windows Security log. This provides a reusable method for reviewing failed authentication attempts without manually filtering the Security log each time.
 
-![Failed login custom view](05-failed-login-custom-view.png)
+![Failed login custom view](screenshots/lab2/05-failed-login-custom-view.png)
 
 ## Findings
 
