@@ -1,4 +1,5 @@
-# windows-cybersecurity-home-lab
+# Windows Cybersecurity Home Lab
+
 A hands-on Windows 11 cybersecurity home lab focused on user management, access control, security monitoring, and incident investigation.
 
 ## Lab Environment
@@ -7,6 +8,8 @@ A hands-on Windows 11 cybersecurity home lab focused on user management, access 
 - Windows 11 Pro
 - Local administrator account: Labadmin
 - Standard user account: Employee01
+
+---
 
 ## Lab 1: User Accounts & Least Privilege
 
@@ -43,7 +46,7 @@ After changing the NTFS permissions, I logged into Employee01 and attempted to a
 
 ![Employee01 access denied](screenshots/lab1/03-confidential-folder-access-denied.png)
 
-## Skills Practiced
+### Skills Practiced
 
 - Windows user and group management
 - User Account Control (UAC)
@@ -53,14 +56,15 @@ After changing the NTFS permissions, I logged into Employee01 and attempted to a
 - Authentication and authorization
 - Security control testing and verification
 
+---
 
 ## Lab 2: Windows Event Viewer & Security Log Analysis
 
-## Objective
+### Objective
 
 The objective of this lab was to learn how to use Windows Event Viewer to identify, investigate, and document authentication activity. I simulated multiple failed login attempts and analyzed the resulting Windows Security events.
 
-## Tasks Completed
+### Tasks Completed
 
 - Navigated Windows Security logs using Event Viewer.
 - Filtered security logs using Windows Event IDs.
@@ -72,31 +76,31 @@ The objective of this lab was to learn how to use Windows Event Viewer to identi
 - Correlated multiple failed attempts with a subsequent successful login.
 - Created a custom Event Viewer view for monitoring failed login attempts.
 
-## Failed Login Investigation
+### Failed Login Investigation
 
 Three incorrect passwords were intentionally entered for the Employee01 account to simulate repeated failed authentication attempts.
 
 Event Viewer recorded these attempts as Event ID 4625.
 
-### Account and Failure Information
+#### Account and Failure Information
 
 The event identified Employee01 as the account associated with the failed logon attempt. The failure reason reported an unknown user name or bad password.
 
 ![Failed logon account and reason](screenshots/lab2/01-failed-logon-account-and-reason.png)
 
-### Source Information
+#### Source Information
 
 The failed logon event showed the workstation as CYBER-LAB-01 and the source network address as 127.0.0.1, indicating that the recorded source was the local system.
 
 ![Failed logon source information](screenshots/lab2/02-failed-logon-source-information.png)
 
-## Multiple Failed Login Attempts
+### Multiple Failed Login Attempts
 
 Filtering the Security log for Event ID 4625 revealed three failed login attempts within several seconds.
 
 ![Multiple failed logon attempts](screenshots/lab2/03-multiple-failed-logon-attempts.png)
 
-## Incident Timeline
+### Incident Timeline
 
 | Time | Event ID | Result |
 |------|----------|--------|
@@ -107,25 +111,25 @@ Filtering the Security log for Event ID 4625 revealed three failed login attempt
 
 After three failed authentication attempts, Employee01 successfully logged into the system.
 
-## Successful Logon Verification
+### Successful Logon Verification
 
 Event ID 4624 confirmed that Employee01 successfully authenticated at 3:04:50 PM.
 
 ![Successful logon](screenshots/lab2/04-successful-logon-after-failures.png)
 
-## Failed Login Monitoring
+### Failed Login Monitoring
 
 I created a custom Event Viewer view called **Failed Login Attempts** that displays Event ID 4625 from the Windows Security log. This provides a reusable method for reviewing failed authentication attempts without manually filtering the Security log each time.
 
 ![Failed login custom view](screenshots/lab2/05-failed-login-custom-view.png)
 
-## Findings
+### Findings
 
 The investigation identified three failed interactive authentication attempts against Employee01 followed by a successful authentication. Because these events were intentionally generated as part of the lab, they represented a controlled situation rather than an actual security incident.
 
 This exercise showed how Windows Security logs can be used to identify authentication failures, correlate related events, and construct a basic incident timeline.
 
-## Skills Practiced
+### Skills Practiced
 
 - Windows Event Viewer
 - Windows Security logs
@@ -137,6 +141,8 @@ This exercise showed how Windows Security logs can be used to identify authentic
 - Incident timeline creation
 - Basic security monitoring
 - Authentication log analysis
+
+---
 
 ## Lab 3: Microsoft Defender & Endpoint Security
 
@@ -158,10 +164,10 @@ I investigated the detection using Windows Security Protection History.
 
 The investigation identified:
 
-- Threat: Virus:DOS/EICAR_Test_File
-- Severity: Severe
-- Initial status: Active
-- Affected file: `C:\Users\Labadmin\Documents\eicar.com`
+- **Threat:** Virus:DOS/EICAR_Test_File
+- **Severity:** Severe
+- **Initial status:** Active
+- **Affected file:** `C:\Users\Labadmin\Documents\eicar.com`
 
 ![EICAR Protection History](screenshots/lab3/lab3-02-eicar-protection-history.png)
 
@@ -239,7 +245,5 @@ Results:
 - Core isolation and Memory Integrity
 - Driver compatibility troubleshooting
 - Windows Device Manager
-- Endpoint security configuration
-- Security verification
 - Endpoint security configuration
 - Security verification
