@@ -224,7 +224,7 @@ After completing the EICAR test, threat remediation, security configuration, and
 
 Results:
 
-- **228,299 files scanned**
+- **322,899 files scanned**
 - **0 threats found**
 - **No current threats**
 - **Scan time:** 15 minutes 53 seconds
